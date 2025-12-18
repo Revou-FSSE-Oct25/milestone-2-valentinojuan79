@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library | RevoFun Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/games.css">
+</head>
+
+<body class="bg-grid min-h-screen flex flex-col">
+
+    <nav class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b-2 border-orange-600/50 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='../index.html'">
+            <div class="w-10 h-10 bg-orange-600 rounded-sm flex items-center justify-center font-black text-2xl font-bungee shadow-[3px_3px_0px_#f8fafc]">R</div>
+            <h1 class="text-2xl font-black tracking-tighter font-bungee italic uppercase text-white">REVO<span class="text-orange-500">FUN</span></h1>
+        </div>
+
+        <div class="hidden md:flex gap-8 text-xs font-black uppercase tracking-[0.2em]">
+            <a href="../index.html" class="text-slate-400 hover:text-white transition">Home</a>
+            <a href="games.html" class="text-orange-500 border-b-2 border-orange-500 pb-1">Library</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-lg border-b border-orange-600/50 flex flex-col p-6 gap-4 text-center md:hidden">
+            <a href="../index.html" class="text-slate-400 hover:text-white font-black uppercase tracking-widest py-2">Home</a>
+            <a href="games.html" class="text-orange-500 font-black uppercase tracking-widest py-2">Library</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-16 w-full relative z-10">
+        <div class="mb-12">
+            <h2 class="text-4xl font-black font-bungee italic tracking-tighter text-white">
+                GAME <span class="text-gradient-animate">LIBRARY</span>
+            </h2>
+            <div class="h-1 w-20 bg-orange-600 mt-2"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            
+            <div class="card-game group">
+                <div class="h-48 bg-slate-800/50 flex items-center justify-center text-6xl relative shrink-0">
+                    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                    <span class="group-hover:scale-110 transition-transform duration-500">✌️</span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-black font-bungee tracking-tight uppercase text-white">Rock Paper Scissors</h3>
+                        <span class="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-tighter">Hot</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-8 italic flex-grow">Uji keberuntungan dan strategimu melawan AI dalam duel klasik yang intens.</p>
+                    <a href="rock-paper-scissors.html" class="btn-play block text-center bg-orange-600 text-white py-3 font-black text-sm uppercase italic tracking-widest hover:bg-orange-500">Battle Now ⚡</a>
+                </div>
+            </div>
+
+            <div class="card-game group">
+                <div class="h-48 bg-slate-800/50 flex items-center justify-center text-6xl relative shrink-0">
+                    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                    <span class="text-orange-500 font-bungee group-hover:scale-110 transition-transform duration-500">?</span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-xl font-black font-bungee tracking-tight uppercase mb-4 text-white">Number Guessing</h3>
+                    <p class="text-slate-400 text-sm mb-8 italic flex-grow">Bisakah kamu menebak angka rahasia sebelum kesempatan habis?</p>
+                    <a href="number-guessing.html" class="btn-play block text-center bg-slate-100 text-slate-900 py-3 font-black text-sm uppercase italic tracking-widest hover:bg-white">Guess Now</a>
+                </div>
+            </div>
+
+            <div class="card-game group">
+                <div class="h-48 bg-slate-800/50 flex items-center justify-center text-6xl relative shrink-0">
+                    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                    <span class="group-hover:scale-110 transition-transform duration-500">⚡</span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-xl font-black font-bungee tracking-tight uppercase mb-4 text-white">Speed Clicker</h3>
+                    <p class="text-slate-400 text-sm mb-8 italic flex-grow">Tes refleks murnimu. Klik sebanyak mungkin dalam batas waktu!</p>
+                    <a href="speed-clicker.html" class="btn-play block text-center bg-slate-700 text-white py-3 font-black text-sm uppercase italic tracking-widest hover:bg-slate-600">Start Clicking</a>
+                </div>
+            </div>
+
+            <div class="card-game is-locked opacity-40 grayscale">
+                <div class="h-48 bg-slate-900/50 flex items-center justify-center text-6xl shrink-0">
+                    <span>🧠</span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow text-center">
+                    <h3 class="text-xl font-black font-bungee text-slate-500 tracking-tight uppercase mb-4">Memory Card</h3>
+                    <p class="text-slate-600 text-sm mb-8 italic flex-grow">Train your focus and visual memory in this game.</p>
+                    <div class="border-2 border-slate-800 text-slate-700 py-3 font-black text-[10px] uppercase tracking-widest">Coming Soon</div>
+                </div>
+            </div>
+
+            <div class="card-game is-locked opacity-40 grayscale">
+                <div class="h-48 bg-slate-900/50 flex items-center justify-center text-6xl shrink-0">
+                    <span>☄️</span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow text-center">
+                    <h3 class="text-xl font-black font-bungee text-slate-500 tracking-tight uppercase mb-4">Falling Objects</h3>
+                    <p class="text-slate-600 text-sm mb-8 italic flex-grow">Avoid the falling objects and survive as long as possible!</p>
+                    <div class="border-2 border-slate-800 text-slate-700 py-3 font-black text-[10px] uppercase tracking-widest">Coming Soon</div>
+                </div>
+            </div>
+
+            <div class="card-game is-locked opacity-40 grayscale">
+                <div class="h-48 bg-slate-900/50 flex items-center justify-center text-6xl shrink-0">
+                    <span>❌</span>
+                </div>
+                <div class="p-8 flex flex-col flex-grow text-center">
+                    <h3 class="text-xl font-black font-bungee text-slate-500 tracking-tight uppercase mb-4">Tic Tac Toe</h3>
+                    <p class="text-slate-600 text-sm mb-8 italic flex-grow">Classic X and O strategy game coming soon for one-on-one duel.</p>
+                    <div class="border-2 border-slate-800 text-slate-700 py-3 font-black text-[10px] uppercase tracking-widest">Coming Soon</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-10 text-center border-t border-slate-900 bg-slate-950/50 mt-auto">
+        <p class="font-black text-slate-700 text-[10px] tracking-[0.5em] uppercase">RevoFun Studio // High Performance Entertainment</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

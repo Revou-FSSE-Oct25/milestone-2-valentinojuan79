@@ -1,0 +1,146 @@
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: #020617; 
+    color: #f8fafc; 
+    overflow-x: hidden;
+}
+        
+.font-bungee { 
+    font-family: 'Bungee', cursive; 
+}
+
+.bg-grid { 
+    background-image: 
+        radial-gradient(circle at center, rgba(30, 41, 59, 0) 0%, #0f172a 100%);
+    background-size: 100% 100%, 50px 50px, 50px 50px, auto;
+    background-attachment: fixed;
+    background-color: #020617;
+}
+
+.bg-grid::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.1) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+#mobile-menu {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#mobile-menu.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.glitch {
+    position: relative;
+    color: white;
+}
+
+.glitch::before, .glitch::after {
+    content: "START THE";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch::before {
+    color: #0ff;
+    z-index: -1;
+    animation: glitch-anim 0.3s infinite;
+}
+
+.glitch::after {
+    color: #f0f;
+    z-index: -2;
+    animation: glitch-anim 0.3s infinite reverse;
+}
+
+@keyframes glitch-anim {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.hot-game-card {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hot-game-card::before {
+    content: "";
+    position: absolute;
+    top: -2px; left: -2px;
+    width: 20px; height: 20px;
+    border-top: 2px solid #f97316;
+    border-left: 2px solid #f97316;
+    transition: 0.3s;
+}
+
+.hot-game-card:hover {
+    border-color: rgba(249, 115, 22, 0.5);
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(249, 115, 22, 0.1);
+}
+
+.hot-game-card:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+button.relative {
+    overflow: hidden;
+    transition: all 0.3s;
+    border: 1px solid rgba(249, 115, 22, 0.5);
+}
+
+button.relative::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
+}
+
+button.relative:hover::after {
+    left: 100%;
+}
+
+.text-gradient-animate {
+    background: linear-gradient(90deg, #f97316, #fb923c, #fde047, #f97316);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradient-flow 3s linear infinite;
+}
+
+@keyframes gradient-flow {
+    to { background-position: 200% center; }
+}

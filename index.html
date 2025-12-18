@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RevoFun Studio - Elite Gaming Experience">
+    <title>RevoFun Studio | Elite Gaming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body class="bg-grid min-h-screen flex flex-col">
+    <nav class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b-2 border-orange-600/50 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
+            <div class="w-10 h-10 bg-orange-600 rounded-sm flex items-center justify-center font-black text-2xl font-bungee shadow-[3px_3px_0px_#f8fafc]">R</div>
+            <h1 class="text-2xl font-black tracking-tighter font-bungee italic uppercase text-white">REVO<span class="text-orange-500">FUN</span></h1>
+        </div>
+
+        <div class="hidden md:flex gap-8 text-xs font-black uppercase tracking-[0.2em]">
+            <a href="index.html" class="text-orange-500 border-b-2 border-orange-500 pb-1">Home</a>
+            <a href="pages/games.html" class="text-slate-400 hover:text-white transition">Library</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-lg border-b border-orange-600/50 flex flex-col p-6 gap-4 text-center md:hidden">
+            <a href="index.html" class="text-orange-500 font-black uppercase tracking-widest py-2">Home</a>
+            <a href="pages/games.html" class="text-slate-400 hover:text-white font-black uppercase tracking-widest py-2">Library</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center px-6 py-12">
+        <div class="text-center mb-20">
+            <h2 class="text-5xl md:text-8xl font-black font-bungee leading-none mb-4 italic tracking-tighter glitch" data-text="START THE">
+                START THE <br> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-400 text-gradient-animate">FUN REVOLUTION.</span>
+            </h2>
+            <p class="text-slate-400 font-bold uppercase tracking-[0.3em] text-sm">High-Stakes Fun for RevoU Warriors</p>
+        </div>
+
+        <div class="w-full max-w-4xl mb-16">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="h-[1px] flex-grow bg-slate-800"></div>
+                <span class="bg-red-600 text-white px-3 py-1 text-[10px] font-black uppercase tracking-widest italic">Today's Hot Game 🔥</span>
+                <div class="h-[1px] flex-grow bg-slate-800"></div>
+            </div>
+
+            <div class="hot-game-card rounded-none overflow-hidden flex flex-col md:flex-row bg-slate-900/50 border-l-4 border-l-orange-600">
+                <div class="md:w-1/2 h-64 bg-slate-800/50 relative flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                    <div class="flex gap-4 text-5xl md:text-7xl group">
+                        <span class="hover:scale-125 transition">✊</span>
+                        <span class="hover:scale-125 transition text-orange-500">✋</span>
+                        <span class="hover:scale-125 transition">✌️</span>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 p-8 flex flex-col justify-center relative z-10">
+                    <h3 class="text-3xl font-black font-bungee mb-2 tracking-tight text-white">ROCK PAPER SCISSORS</h3>
+                    <p class="text-slate-400 text-sm mb-8 leading-relaxed italic">"The ultimate test of intuition and strategy. Face the machine and claim your glory."</p>
+                    
+                    <button class="relative bg-orange-600 hover:bg-orange-500 text-slate-950 font-black py-4 px-10 self-start uppercase italic tracking-tighter transition group overflow-hidden">
+                        <span class="relative z-10">Battle Now ⚡</span>
+                        <a href="pages/rock-paper-scissors.html" class="absolute inset-0 z-20"></a>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center">
+            <a href="pages/games.html" class="text-slate-500 font-black text-sm uppercase tracking-[0.4em] hover:text-orange-500 transition cursor-pointer">
+                View Full Library [//]
+            </a>
+        </div>
+    </main>
+
+    <footer class="p-10 text-center border-t border-slate-900 bg-slate-950/50">
+        <p class="font-black text-slate-700 text-[10px] tracking-[0.5em] uppercase">
+            Built by RevoFun Studio &copy; 2025 | No Guts No Glory
+        </p>
+    </footer>
+
+    <script src="js/main.js">
+    </script>
+</body>
+</html>

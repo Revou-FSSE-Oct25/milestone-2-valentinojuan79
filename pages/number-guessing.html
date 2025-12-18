@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing | RevoFun Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/number-guessing.css">
+</head>
+<body class="bg-grid min-h-screen flex flex-col">
+    <nav class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b-2 border-orange-600/50 px-8 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='../index.html'">
+        <div class="w-10 h-10 bg-orange-600 rounded-sm flex items-center justify-center font-black text-2xl font-bungee shadow-[3px_3px_0px_#f8fafc]">R</div>
+        <h1 class="text-2xl font-black tracking-tighter font-bungee italic uppercase text-white">REVO<span class="text-orange-500">FUN</span></h1>
+    </div>
+
+    <div class="hidden md:flex gap-8 text-xs font-black uppercase tracking-[0.2em]">
+        <a href="../index.html" class="text-slate-400 hover:text-white transition">Home</a>
+        <a href="games.html" class="text-slate-400 hover:text-white transition">Library</a>
+    </div>
+
+    <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+    </button>
+
+    <div id="mobile-menu" class="absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-lg border-b border-orange-600/50 flex flex-col p-6 gap-4 text-center md:hidden opacity-0 pointer-events-none transition-all duration-300">
+        <a href="../index.html" class="text-slate-400 hover:text-white font-black uppercase tracking-widest py-2">Home</a>
+        <a href="games.html" class="text-slate-400 hover:text-white font-black uppercase tracking-widest py-2">Library</a>
+    </div>
+</nav>
+
+    <main class="flex-grow flex flex-col items-center justify-center px-6 py-12">
+        <div class="w-full max-w-lg">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-black font-bungee italic text-white uppercase tracking-tighter">
+                    Number <span class="text-orange-500">Guessing</span>
+                </h2>
+                <p class="text-slate-500 text-xs font-bold uppercase tracking-[0.3em] mt-2 italic">Solve the secret number [1-100]</p>
+            </div>
+
+            <div class="mb-6 bg-slate-900/50 border border-slate-800 transition-all hover:border-slate-700">
+                <button id="toggleTutorial" class="w-full p-4 flex justify-between items-center hover:bg-slate-800/50 transition-colors focus:outline-none">
+                    <span class="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500">How to Play</span>
+                    <span id="tutorialArrow" class="text-slate-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
+                </button>
+                
+                <div id="tutorialContent">
+                    <div class="p-6 text-xs text-slate-400 leading-relaxed border-t border-slate-800 bg-slate-950/80">
+                        <p class="mb-4"><span class="text-white font-bold">[MISSION]:</span> Guess the random number between <span class="text-orange-500 font-bungee">1-100</span> before 10 attempts.</p>
+                        <ul class="space-y-3 list-none">
+                            <li class="flex gap-3"><span class="text-orange-500 font-black">01.</span> Input your guess number.</li>
+                            <li class="flex gap-3"><span class="text-orange-500 font-black">02.</span> Click <span class="italic text-white">"Execute Guess"</span>.</li>
+                            <li class="flex gap-3"><span class="text-orange-500 font-black">03.</span> <span class="text-orange-400 font-bold uppercase">HIGHER:</span> The secret number is higher.</li>
+                            <li class="flex gap-3"><span class="text-orange-500 font-black">04.</span> <span class="text-blue-400 font-bold uppercase">LOWER:</span> The secret number is lower.</li>
+                            <li class="flex gap-3"><span class="text-orange-500 font-black">05.</span> <span class="text-red-500 font-bold uppercase">LIMIT:</span> 10 attempts available.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gameContainer" class="game-card p-8 md:p-12 relative overflow-hidden">
+                <div id="feedback" class="hidden mb-6 p-4 text-center font-black uppercase italic text-sm tracking-widest border-l-4"></div>
+
+                <div class="space-y-6">
+                    <div class="flex flex-col items-center">
+                        <span class="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">Attempts Left</span>
+                        <div class="text-5xl font-bungee text-white" id="attemptsLeft">10</div>
+                    </div>
+
+                    <div class="relative">
+                        <input type="number" id="guessInput" placeholder="ENTER CODE..." 
+                            class="w-full bg-slate-900 border-2 border-slate-700 p-5 text-center text-2xl font-bungee text-orange-500 focus:outline-none focus:border-orange-500 transition-colors uppercase">
+                    </div>
+
+                    <button id="submitBtn" class="btn-action w-full bg-orange-600 hover:bg-orange-500 text-white py-4 font-black text-lg uppercase italic tracking-tighter shadow-lg">
+                        Execute Guess ⚡
+                    </button>
+                </div>
+
+                <div id="previousGuesses" class="hidden mt-10 border-t border-slate-700 pt-6">
+                    <p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 text-center">Previous Attempts</p>
+                    <div id="guessList" class="flex flex-wrap justify-center gap-2"></div>
+                </div>
+            </div>
+
+            <div id="gameOverContainer" class="hidden game-card p-12 text-center neon-border-orange">
+                <div id="gameOverMessage" class="mb-8"></div>
+                <button id="resetBtn" class="btn-action w-full bg-white text-slate-950 hover:bg-orange-500 hover:text-white py-4 font-black text-lg uppercase italic tracking-tighter transition-all">
+                    Initialize New Round
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-8 text-center border-t border-slate-900 bg-slate-950/50">
+        <p class="font-black text-slate-800 text-[10px] tracking-[0.5em] uppercase">RevoFun Studio &copy; 2025</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/number-guessing.js"></script>
+</body>
+</html>

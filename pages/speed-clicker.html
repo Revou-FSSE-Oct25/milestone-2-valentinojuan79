@@ -4,45 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speed Clicker | RevoFun Studio</title>
+    <meta name="description" content="Test your reflexes in Speed Clicker. Click as fast as possible in 10 seconds!">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/speed-clicker.css">
 </head>
+
 <body class="bg-grid min-h-screen flex flex-col">
-    <nav class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b-2 border-orange-600/50 px-8 py-4 flex justify-between items-center">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='../index.html'">
-            <div class="w-10 h-10 bg-orange-600 rounded-sm flex items-center justify-center font-black text-2xl font-bungee shadow-[3px_3px_0px_#f8fafc]">R</div>
-            <h1 class="text-2xl font-black tracking-tighter font-bungee italic uppercase text-white">REVO<span class="text-orange-500">FUN</span></h1>
-        </div>
 
-        <div class="hidden md:flex gap-8 text-xs font-black uppercase tracking-[0.2em]">
-            <a href="../index.html" class="text-slate-400 hover:text-white transition">Home</a>
-            <a href="games.html" class="text-slate-400 hover:text-white transition">Library</a>
-        </div>
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b-2 border-orange-600/50">
+        <nav class="px-8 py-4 flex justify-between items-center max-w-7xl mx-auto" aria-label="Main Navigation">
+            
+            <a href="../index.html" class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity" aria-label="RevoFun Homepage">
+                <div class="w-10 h-10 bg-orange-600 rounded-sm flex items-center justify-center font-black text-2xl font-bungee shadow-[3px_3px_0px_#f8fafc]">R</div>
+                <div class="text-2xl font-black tracking-tighter font-bungee italic uppercase text-white">REVO<span class="text-orange-500">FUN</span></div>
+            </a>
 
-        <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-        </button>
+            <ul class="hidden md:flex gap-8 text-xs font-black uppercase tracking-[0.2em] list-none">
+                <li><a href="../index.html" class="text-slate-400 hover:text-white transition">Home</a></li>
+                <li><a href="games.html" class="text-slate-400 hover:text-white transition">Library</a></li>
+            </ul>
 
-        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-lg border-b border-orange-600/50 flex flex-col p-6 gap-4 text-center md:hidden">
-            <a href="../index.html" class="text-slate-400 hover:text-white font-black uppercase tracking-widest py-2">Home</a>
-            <a href="games.html" class="text-slate-400 hover:text-white font-black uppercase tracking-widest py-2">Library</a>
-        </div>
-    </nav>
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50" aria-label="Toggle Menu" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
 
+            <div id="mobile-menu" class="absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-lg border-b border-orange-600/50 flex flex-col p-6 gap-4 text-center md:hidden">
+                <a href="../index.html" class="text-slate-400 hover:text-white font-black uppercase tracking-widest py-2">Home</a>
+                <a href="games.html" class="text-slate-400 hover:text-white font-black uppercase tracking-widest py-2">Library</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
     <main class="flex-grow flex flex-col items-center justify-center px-6 py-12">
         <div class="w-full max-w-lg relative z-10">
+            
             <div class="text-center mb-8">
-                <h2 class="text-4xl font-black font-bungee italic text-white uppercase tracking-tight">
+                <h1 class="text-4xl font-black font-bungee italic text-white uppercase tracking-tight">
                     Speed <span class="text-orange-500 text-gradient-animate">Clicker</span>
-                </h2>
+                </h1>
                 <p class="text-slate-500 text-xs font-bold uppercase tracking-[0.3em] mt-2 italic">Test your pure finger speed</p>
             </div>
 
-            <div class="mb-6 bg-slate-900/50 border border-slate-800 transition-all hover:border-slate-700">
-                <button id="toggleTutorial" class="w-full p-4 flex justify-between items-center hover:bg-slate-800/50 transition-colors focus:outline-none">
+            <section class="mb-6 bg-slate-900/50 border border-slate-800 transition-all hover:border-slate-700" aria-label="Game Instructions">
+                <button id="toggleTutorial" class="w-full p-4 flex justify-between items-center hover:bg-slate-800/50 transition-colors focus:outline-none" aria-expanded="false" aria-controls="tutorialContent">
                     <span class="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500">How to Play</span>
                     <span id="tutorialArrow" class="text-slate-500 transition-transform duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,9 +68,9 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="game-card p-8 text-center relative overflow-hidden">
+            <section class="game-card p-8 text-center relative overflow-hidden" aria-label="Game Board">
                 <div class="flex justify-between mb-8">
                     <div class="text-left">
                         <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Time Remaining</span>
@@ -73,40 +82,42 @@
                     </div>
                 </div>
 
-                <div class="w-full h-2 bg-slate-900 mb-10 overflow-hidden">
+                <div class="w-full h-2 bg-slate-900 mb-10 overflow-hidden" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                     <div id="timerBar" class="h-full bg-orange-600 w-full transition-all duration-100 linear"></div>
                 </div>
 
                 <div class="mb-10">
-                    <div id="scoreCount" class="text-8xl font-bungee text-white mb-2">0</div>
+                    <div id="scoreCount" class="text-8xl font-bungee text-white mb-2" aria-live="off">0</div>
                     <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest italic">Total Clicks</p>
                 </div>
 
-                <button id="clickBtn" class="click-btn w-full bg-orange-600 hover:bg-orange-500 text-white py-12 border-b-8 border-orange-800 font-black text-4xl uppercase italic tracking-tighter">
+                <button id="clickBtn" class="touch-manipulation select-none click-btn w-full bg-orange-600 hover:bg-orange-500 text-white py-12 border-b-8 border-orange-800 font-black text-4xl uppercase italic tracking-tighter" aria-label="Click me fast">
                     CLICK! ⚡
                 </button>
 
                 <div id="startPrompt" class="absolute inset-0 bg-slate-950/90 backdrop-blur-md flex flex-col items-center justify-center p-8 transition-opacity duration-300 z-20">
-                    <div class="text-6xl mb-4 animate-bounce">⚡</div>
-                    <h3 class="text-2xl font-black font-bungee mb-4 italic text-white">READY TO BLAST?</h3>
+                    <div class="text-6xl mb-4 animate-bounce" aria-hidden="true">⚡</div>
+                    <h2 class="text-2xl font-black font-bungee mb-4 italic text-white">READY TO BLAST?</h2>
                     <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-8">Click the button below to start</p>
-                    <button id="beginBtn" class="bg-white text-slate-950 px-10 py-4 font-black uppercase text-sm italic tracking-[0.2em] hover:bg-orange-500 hover:text-white transition-all shadow-[4px_4px_0px_#f97316]">Start Mission</button>
+                    <button id="beginBtn" class="bg-white text-slate-950 px-10 py-4 font-black uppercase text-sm italic tracking-[0.2em] hover:bg-orange-500 hover:text-white transition-all shadow-[4px_4px_0px_#f97316]">Start Clicking</button>
                 </div>
 
-                <div id="resultOverlay" class="absolute inset-0 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center p-8 hidden z-30">
-                    <div class="text-5xl mb-4">🏆</div>
-                    <h3 class="text-4xl font-black font-bungee text-orange-500 mb-2 italic">FINISH!</h3>
+                <section id="resultOverlay" class="absolute inset-0 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center p-8 hidden z-30" aria-label="Game Results">
+                    <div class="text-5xl mb-4" aria-hidden="true">🏆</div>
+                    <h2 class="text-4xl font-black font-bungee text-orange-500 mb-2 italic">FINISH!</h2>
                     <p id="finalScoreText" class="text-slate-400 font-bold uppercase tracking-widest mb-10 text-[10px] text-center"></p>
-                    <button onclick="resetGame()" class="bg-orange-600 text-white px-12 py-4 font-black uppercase italic tracking-widest hover:bg-orange-500 transition shadow-[4px_4px_0px_white]">Replay Round</button>
-                </div>
-            </div>
+                    <button id="resetBtn" class="bg-orange-600 text-white px-12 py-4 font-black uppercase italic tracking-widest hover:bg-orange-500 transition shadow-[4px_4px_0px_white]">Play Again</button>
+                </section>
+            </section>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="p-8 text-center border-t border-slate-900 bg-slate-950/50 mt-auto">
         <p class="font-black text-slate-800 text-[10px] tracking-[0.5em] uppercase">RevoFun Studio &copy; 2025. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript -->
     <script src="../js/main.js"></script>
     <script src="../js/speed-clicker.js"></script>
 </body>

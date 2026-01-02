@@ -9,20 +9,19 @@ const gameOverMessage = document.getElementById("gameOverMessage");
 const resetBtn = document.getElementById("resetBtn");
 const previousGuessesList = document.getElementById("guessList");
 const previousGuessesContainer = document.getElementById("previousGuesses");
-const tutorialBtn = document.getElementById('toggleTutorial');
-const tutorialContent = document.getElementById('tutorialContent');
-const tutorialArrow = document.getElementById('tutorialArrow');
 
 // Game State
 let targetNumber;
 let attemptsLeft;
 let gameActive;
 let previousGuesses;
+const MAX_ATTEMPTS = 10;
+const MAX_NUMBER = 100;
 
 // Initialize Game
 function initGame() {
-    targetNumber = Math.floor(Math.random() * 100) + 1; // Random number between 1-100
-    attemptsLeft = 10;  
+    targetNumber = Math.floor(Math.random() * MAX_NUMBER) + 1; // Random number between 1-100
+    attemptsLeft = MAX_ATTEMPTS;  
     gameActive = true; 
     previousGuesses = [];
     
@@ -98,7 +97,6 @@ function processGuess(guess) {
         endGame(false);
         showFeedback(`YOU FAILED! Number was ${targetNumber}.`, "error");
     } else {
-        // Hanya reset input jika game masih aktif
         guessInput.value = ""; 
         guessInput.focus();
     }
@@ -127,17 +125,6 @@ function handleSubmit() {
 }
 
 // Event Listeners
-// Tutorial Toggle
-tutorialBtn.addEventListener('click', () => {
-    const isExpanded = tutorialContent.style.maxHeight && tutorialContent.style.maxHeight !== "0px";
-    if (isExpanded) {
-        tutorialContent.style.maxHeight = "0px";
-        tutorialArrow.classList.remove('rotate-180');
-    } else {
-        tutorialContent.style.maxHeight = tutorialContent.scrollHeight + "px";
-        tutorialArrow.classList.add('rotate-180');
-    }
-});
 submitBtn.addEventListener("click", handleSubmit);
 guessInput.addEventListener("keydown", (e) => { if (e.key === "Enter") handleSubmit(); });
 resetBtn.addEventListener("click", initGame);

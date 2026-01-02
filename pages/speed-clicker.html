@@ -97,15 +97,32 @@
 
                 <div id="startPrompt" class="absolute inset-0 bg-slate-950/90 backdrop-blur-md flex flex-col items-center justify-center p-8 transition-opacity duration-300 z-20">
                     <div class="text-6xl mb-4 animate-bounce" aria-hidden="true">⚡</div>
-                    <h2 class="text-2xl font-black font-bungee mb-4 italic text-white">READY TO BLAST?</h2>
-                    <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-8">Click the button below to start</p>
+                    <h2 class="text-2xl font-black font-bungee mb-2 italic text-white">READY TO BLAST?</h2>
+    
+                    <input type="text" id="nicknameInput" placeholder="ENTER NICKNAME" maxlength="12" 
+                    class="bg-slate-900 border-2 border-orange-600 text-white text-center font-bold p-3 mb-6 w-full focus:outline-none focus:ring-2 focus:ring-orange-400 uppercase tracking-widest">
+    
                     <button id="beginBtn" class="bg-white text-slate-950 px-10 py-4 font-black uppercase text-sm italic tracking-[0.2em] hover:bg-orange-500 hover:text-white transition-all shadow-[4px_4px_0px_#f97316]">Start Clicking</button>
                 </div>
 
                 <section id="resultOverlay" class="absolute inset-0 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center p-8 hidden z-30" aria-label="Game Results">
-                    <div class="text-5xl mb-4" aria-hidden="true">🏆</div>
                     <h2 class="text-4xl font-black font-bungee text-orange-500 mb-2 italic">FINISH!</h2>
-                    <p id="finalScoreText" class="text-slate-400 font-bold uppercase tracking-widest mb-10 text-[10px] text-center"></p>
+                    <p id="finalScoreText" class="text-slate-400 font-bold uppercase tracking-widest mb-6 text-[10px] text-center"></p>
+    
+                    <div class="w-full max-h-40 overflow-y-auto mb-6 bg-slate-900/50 p-2 border border-slate-800">
+                        <table class="w-full text-[10px] text-left uppercase font-bold tracking-tighter">
+                        <thead class="text-orange-500 border-b border-slate-700">
+                            <tr>
+                                <th class="pb-1">Rank</th>
+                                <th class="pb-1">Name</th>
+                                <th class="pb-1 text-right">CPS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody" class="text-slate-300">
+                        </tbody>
+                        </table>
+                    </div>
+
                     <button id="resetBtn" class="bg-orange-600 text-white px-12 py-4 font-black uppercase italic tracking-widest hover:bg-orange-500 transition shadow-[4px_4px_0px_white]">Play Again</button>
                 </section>
             </section>

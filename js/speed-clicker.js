@@ -1,7 +1,4 @@
 // DOM Elements
-const tutorialBtn = document.getElementById('toggleTutorial');
-const tutorialContent = document.getElementById('tutorialContent');
-const tutorialArrow = document.getElementById('tutorialArrow');
 const clickBtn = document.getElementById('clickBtn');
 const scoreUI = document.getElementById('scoreCount');
 const timeLeftUI = document.getElementById('timeLeft');
@@ -12,6 +9,8 @@ const beginBtn = document.getElementById('beginBtn');
 const resultOverlay = document.getElementById('resultOverlay');
 const finalScoreText = document.getElementById('finalScoreText');
 const resetBtn = document.getElementById('resetBtn');
+const nicknameInput = document.getElementById('nicknameInput');
+const leaderboardBody = document.getElementById('leaderboardBody');
 
 // Game State
 let clicks = 0;
@@ -46,8 +45,48 @@ function endGame() {
     timeLeft = 0;
     timeLeftUI.textContent = '0.0s';
     timerBar.style.width = '0%';
-    finalScoreText.textContent = `You achieved ${clicks} clicks (${(clicks/10).toFixed(1)} CPS)`;
+    const finalCPS = (clicks / 10).toFixed(1);
+    finalScoreText.textContent = `You achieved ${clicks} clicks (${finalCPS} CPS)`;
+    const nickname = nicknameInput.value.trim();
+    saveScore(nickname, finalCPS);
+    updateLeaderboardUI();
     resultOverlay.classList.remove('hidden');
+}
+
+// Leaderboard Local Storage
+function getLeaderboard() {
+    const data = localStorage.getItem('clicker_leaderboard');
+    return data ? JSON.parse(data) : [];
+}
+
+// Save Score
+function saveScore(name, cps) {
+    let leaderboard = getLeaderboard();
+    
+    leaderboard.push({ name: name || "Anonymous", cps: parseFloat(cps) });
+
+    leaderboard.sort((a, b) => b.cps - a.cps);
+
+    leaderboard = leaderboard.slice(0, 5);
+
+    localStorage.setItem('clicker_leaderboard', JSON.stringify(leaderboard));
+}
+
+// Update Leaderboard UI
+function updateLeaderboardUI() {
+    const leaderboard = getLeaderboard();
+    leaderboardBody.innerHTML = '';
+
+    leaderboard.forEach((entry, index) => {
+        const row = `
+            <tr class="border-b border-slate-800/50">
+                <td class="py-2 text-orange-500">#${index + 1}</td>
+                <td class="py-2 text-white">${entry.name}</td>
+                <td class="py-2 text-right text-orange-400">${entry.cps.toFixed(1)}</td>
+            </tr>
+        `;
+        leaderboardBody.innerHTML += row;
+    });
 }
 
 // Reset Game Visual
@@ -63,18 +102,6 @@ function resetGame() {
 }
 
 // Event Listeners
-// Tutorial Toggle
-tutorialBtn.addEventListener('click', () => {
-    const isExpanded = tutorialContent.style.maxHeight && tutorialContent.style.maxHeight !== "0px";
-    if (isExpanded) {
-        tutorialContent.style.maxHeight = "0px";
-        tutorialArrow.classList.remove('rotate-180');
-    } else {
-        tutorialContent.style.maxHeight = tutorialContent.scrollHeight + "px";
-        tutorialArrow.classList.add('rotate-180');
-    }
-});
-
 // Begin Button
 beginBtn.addEventListener('click', () => {
     startPrompt.style.opacity = '0';
